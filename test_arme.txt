@@ -1,0 +1,16 @@
+ID: 86ea9c677f8a52a6a5e48bcc5ef87f2f04d939b9006dd7ca27f8021e5e7147bd
+name: Epee Longue
+type: Melee
+damage: 1d8
+damage_type: Tranchant
+weight: 3
+properties: []
+
+ID: e48f7469310d069f1b08b25d44dfc9a918d896515c385e959855d55d3ca1e233
+name: Arc Long
+type: Distance
+damage: 1d8
+damage_type: Perforant
+weight: 2
+properties: []
+

@@ -1,0 +1,84 @@
+ID: 3f75e691cbf7c5090b0b88aad57f928ed5614ac4266fe8dfc8d801004f2111be
+name: Matelassee
+type: Légère
+armor_class: 11
+weight: 10
+properties: ['Desavantage en Discrétion']
+
+ID: 56b7cac71a790e0031f81ed2307b4e8cca1147d3f65002e386b1c519b7afe46e
+name: Cuir
+type: Légère
+armor_class: 11
+weight: 10
+properties: []
+
+ID: 2aed1944ac1e56ad137fc809d59a1c78e4c556b0dcd02002ee34135c7bdbdfa4
+name: Cuir Cloute
+type: Légère
+armor_class: 12
+weight: 13
+properties: []
+
+ID: 9e76b73d562c4b4ceb9103aa35336a78e9ba4a72c0c3befa42965249798eeca2
+name: Peaux
+type: Légère
+armor_class: 12
+weight: 10
+properties: []
+
+ID: 8b8da48460e3b24be5276f7cb4d645c1fc79343242a91fffd2f95577304384c8
+name: Chemise de Mailles
+type: Légère
+armor_class: 13
+weight: 20
+properties: []
+
+ID: 9d3d4142c7526c04e82c4873e495521157df7790beb74a089280bab215ef5a9e
+name: Ecailles
+type: Moyenne
+armor_class: 13
+weight: 20
+properties: ['Desavantage en Discrétion']
+
+ID: 930847958ea7da8ab40abef509803e521fddc998e409b0b6424b16e87dd6906c
+name: Cuirasse
+type: Moyenne
+armor_class: 14
+weight: 30
+properties: []
+
+ID: 21f4bbf00895c2169da73b837ea61ade9a188709de27395c7f95fcf2670cf198
+name: Demi-Plate
+type: Moyenne
+armor_class: 15
+weight: 40
+properties: ['Desavantage en Discrétion']
+
+ID: 74b8c1f6adc57ca1e80868f196a768a6172654e8012bd1c2cffd7b307fe4557b
+name: Broigne
+type: Lourde
+armor_class: 14
+weight: 40
+properties: ['Desavantage en Discrétion']
+
+ID: a4031134eb31e31cd5ab0ca2e687ed7dc60e0a95400659d46cc5877e6ea44b23
+name: Cotte de Mailles
+type: Lourde
+armor_class: 16
+weight: 55
+properties: ['Desavantage en Discrétion']
+
+ID: 06fac38ad95cb3100f6cddf934fd6be143baedfd758613f7f5787752912b9d81
+name: Clibanion
+type: Lourde
+armor_class: 17
+weight: 60
+properties: ['Desavantage en Discrétion']
+
+ID: 00f7e6000e02f47d3b861912ade2d1a489f30c525ab4b83faf74eb2a66ba0066
+name: Harnois
+type: Lourde
+armor_class: 18
+weight: 65
+properties: ['Desavantage en Discrétion']
+
