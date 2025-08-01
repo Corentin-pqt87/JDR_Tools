@@ -5,7 +5,7 @@ from class_arme import *
 from class_armure import *
 
 
-def main():
+def etape_par_etape_RUN():
     character = Character()
 
     nom = input("Entrez le nom de votre personnage :\n>>> ")
@@ -827,4 +827,4 @@ def main():
     return True
 
 if __name__ == "__main__":
-    main() 
+    etape_par_etape_RUN() 
