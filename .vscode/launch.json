@@ -6,11 +6,11 @@
     "configurations": [
     
         {
-            "name": "Run Character Maker as module",
-            "type": "python",
+            "name": "Python Debugger: Current File",
+            "type": "debugpy",
             "request": "launch",
-            "module": "character_maker.character_maker",
-            "cwd": "${workspaceFolder}"
+            "program": "${file}",
+            "console": "integratedTerminal"
         }
     ]
 }
