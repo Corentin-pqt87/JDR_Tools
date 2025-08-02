@@ -12,6 +12,7 @@ class Character :
             "class": "",
             "race": "",
             "alignment": "",
+            "historique":"",
             "stat_force": 0,
             "stat_dexterity": 0,
             "stat_constitution": 0,
