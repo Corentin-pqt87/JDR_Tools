@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from random import randint
-from class_character import *
-from class_arme import *
-from class_armure import *
+from .class_character import *
+from .class_arme import *
+from .class_armure import *
 
 
 def etape_par_etape_RUN():

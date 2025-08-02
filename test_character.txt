@@ -1,0 +1,46 @@
+name: Héros
+level: 1
+class: Guerrier
+race: 
+alignment: 
+stat_force: 16
+stat_dexterity: 14
+stat_constitution: 15
+stat_intelligence: 10
+stat_sagesse: 12
+stat_charisme: 8
+bonus_maitrise: 2
+pv_max: 10
+pv_actuel: 10
+armure: 0
+armure_type: None
+arme_principale: None
+arme_secondaire: None
+initiative: 0
+vitesse: 7.5
+sauvegarde_force: 0
+sauvegarde_dexterite: 0
+sauvegarde_constitution: 0
+sauvegarde_intelligence: 0
+sauvegarde_sagesse: 0
+sauvegarde_charisme: 0
+competence_acrobatie: False
+competence_arcanes: False
+competence_athletisme: False
+competence_discretion: False
+competence_histoire: False
+competence_intimidation: False
+competence_investigation: False
+competence_medic: False
+competence_nature: False
+competence_perception: False
+competence_persuasion: False
+competence_religion: False
+competence_survie: False
+competence_tromperie: False
+inventaire: []
+armor_type: name: Cuir
+type: Légère
+armor_class: 11
+weight: 10
+properties: []

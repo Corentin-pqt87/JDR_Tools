@@ -1,11 +1,7 @@
 # jdr tools\character_maker\character_maker.py
 # -*- coding: utf-8 -*-
 from random import randint
-# importe la classe Character
-from script.class_character import *
-
-import script.etape_par_etape
-
+from .script import etape_par_etape 
 
 print(
     "Bienvenu dans le 'Character_Maker' un outil de création de personnage DnD.\n",
@@ -16,4 +12,4 @@ start = input(
 )
 if start == "1":
     print("Vous avez choisi de créer votre personnage étape par étape.")
-    script.etape_par_etape.main()
+    etape_par_etape.etape_par_etape_RUN()

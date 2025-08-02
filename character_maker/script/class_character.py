@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-from class_arme import *
-from class_armure import *
+import os
+from .class_arme import *
+from .class_armure import *
 
 class Character :
     """classe qui représente une fiche de personnage de donjon et dragon"""
@@ -92,7 +93,9 @@ if __name__ == "__main__":
     character = Character()
     character.data['name'] = 'Héros'
     character.data['class'] = 'Guerrier'
-    character.data['armor_type'] = armure_get_by_name("Cuir", '../../data/base/items/armures.txt')
+    armure_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'base', 'item', 'armure.txt')
+    armure_path = os.path.normpath(armure_path)
+    character.data['armor_type'] = armure_get_by_name("Cuir", armure_path)
     character.data['stat_force'] = 16
     character.data['stat_dexterity'] = 14
     character.data['stat_constitution'] = 15

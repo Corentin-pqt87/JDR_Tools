@@ -1,0 +1,19 @@
+jdr_tools
+|  character_maker
+|  |  character_maker.py
+|  |  script
+|  |  |  __init__.py
+|  |  |  class_arme.py
+|  |  |  class_armure.py
+|  |  |  class_character.py
+|  |  |  etape_par_etape.py
+|  data
+|  |  base
+|  |  |  character
+|  |  |  item
+|  |  |  |  armure.txt
+|  |  |  mob
+|  |  save
+|  |  |  character
+|  |  |  item
+|  |  |  mob
