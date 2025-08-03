@@ -54,6 +54,8 @@ def qcm():
         character.data["stat_dexterity"] += 1
         character.data["alignment"] = "Chaotique Neutre"
         historique.append("Voleur")
+        character.data['competence_escamotage'] = True
+        classe.append('Roublard')
     # 4. +1 Force, Alignement : Loyal Neutre ou Loyal Mauvais
     elif choi_1 == 4:
         character.data["stat_force"] += 1
@@ -202,4 +204,123 @@ def qcm():
         historique.append('Sage')
         historique.append('Ermite')
     
-    
+    # Question 6 : Le Savoir
+    print(
+        "Un vieux professeur te propose de t’enseigner tout ce qu’il sait, mais il ne reste qu’un mois à vivre. Que fais-tu ?\n\n",
+        "1. J’étudie sans relâche, quitte à m’épuiser.\n",
+        "2. Je choisis un sujet qui me passionne et me concentre dessus.\n",
+        "3. Je passe du temps avec lui à échanger sur la vie.\n",
+        "4. Je vole ses notes et pars. Je n’ai pas le temps d’attendre."
+    )
+    choi_6 = int(input("Choix (1-4) :\n>>> "))
+    #  1  +1 Intelligence, compétence : Arcanes, outils : calligraphie
+    if choi_6 == 1:
+        character.data['stat_intelligence'] += 1
+        if character.data['competence_arcanes'] == True:
+            character.data['stat_intelligence'] += 1
+        else:
+            character.data['competence_arcanes'] = True
+        classe.append('Magicien')
+    #  2  +1 Intelligence, compétence au choix : Nature, Histoire, Religion ou Investigation
+    elif choi_6 == 2:
+        character.data['stat_intelligence'] += 1
+        print(
+            "Vous avez le choix entre :\n",
+            "1. Les savoirs et arts de la nature\n",
+            "2. Les histoire du passé\n",
+            "3. Les forces qui érige ce monde\n",
+            "4. Les savoires interdit de sciences social"
+        )
+        choi_6_ = int(input("Choix (1-4) :\n>>> "))
+        if choi_6_ == 1:
+            classe.append('Druide')
+            if character.data['competence_nature'] == True:
+                character.data['stat_sagesse'] += 1
+            else:
+                character.data['competence_nature'] = True
+        elif choi_6_ == 2:
+            character.data['stat_sagesse'] += 1
+            if character.data['competence_histoire'] == True:
+                character.data['stat_sagesse'] += 1
+            else:
+                character.data['competence_histoire'] = True
+        elif choi_6_ == 3:
+            classe.append('Clerc')
+            classe.append('Paladin')
+            if character.data['competence_religion'] == True:
+                character.data['stat_charisme'] += 1
+            else:
+                character.data['competence_religion'] = True
+        elif choi_6_ == 4:
+            classe.append('Barde')
+            if character.data['competence_investigation'] == True:
+                character.data['stat_charisme'] += 1
+            else:
+                character.data['competence_investigation'] = True
+            if character.data['competence_intimidation'] == True:
+                character.data['stat_charisme'] += 1
+            else:
+                character.data['competence_intimidation'] = True
+    #  3  +1 Sagesse, compétence : Intuition, Historique : Sage ou Ermite
+    elif choi_6 == 3:
+        character.data['stat_sagesse'] += 1
+        character.data['competence_perception'] = True
+        if character.data['competence_histoire'] == True:
+            character.data['stat_sagesse'] += 1
+        else:
+            character.data['competence_histoire'] = True
+        historique.append('Sage')
+        historique.append('Ermite')
+    #  4  +1 Dextérité, compétence : Escamotage, Alignement : Chaotique
+    elif choi_6 == 4:
+        character.data['stat_dexterity'] += 1
+        if character.data['competence_escamotage'] == True:
+            character.data['stat_dexterity'] += 1
+        else:
+            character.data['competence_escamotage'] = True
+        historique.append("Voleur")
+        classe.append('Roublard')
+    #   Question 7 : L’Aventure
+    print(
+        "Tu peux partir pour une expédition vers un lieu légendaire, mais tu dois tout abandonner. Acceptes-tu ?\n\n",
+        "1. Oui, pour découvrir ce lieu interdit.\n",
+        "2. Non, j’ai des devoirs ici.\n",
+        "3. Oui, mais seulement pour la gloire et la richesse.\n",
+        "4. e propose un plan pour organiser l’expédition de manière rentable"
+    )
+    choi_7 = int(input("Choix (1-4) :\n>>> "))
+    #  1   compétence : Survie, historique : Explorateur ou Vagabond
+    if choi_7 == 1:
+        if character.data['competence_survie'] == True:
+            character.data['stat_constitution'] = True
+        else:
+            character.data['competence_survie'] = True
+        historique.append('Explorateur')
+        historique.append('Vagabond')
+    #  2  Alignement : Loyal, historique : Artisan ou Citadin
+    elif choi_7 == 2:
+        alignement.append('Loyal Neutre')
+        historique.append('Artisan')
+        historique.append('Citadin')
+        character.data['stat_constitution'] += 1
+    #  3   compétence : Persuasion, Alignement : Chaotique Neutre
+    elif choi_7 == 3:
+        if character.data['competence_persuasion'] == True:
+            character.data['stat_charisme'] += 1
+        else:
+            character.data['competence_persuasion'] = True
+        alignement.append('Chaotique Neutre')
+    #  4  compétence : Investigation, outils : outils de cartographe
+    elif choi_7 == 4:
+        if character.data['competence_investigation'] == True:
+            character.data['stat_dexterity'] += 1
+        else:
+            character.data['competence_investigation'] = True
+    #   Question 8 : L’Identité
+    print(
+        "On te prend pour quelqu’un d’autre : un héros ou un criminel célèbre. Que fais-tu ?\n\n",
+        "1. Je corrige immédiatement l’erreur.\n",
+        "2. Je joue le jeu pour voir ce que j’en retire.\n",
+        "3. Je panique et prends la fuite\n",
+        "4. Je menace ceux qui m’accusent et retourne la situation."
+    )
