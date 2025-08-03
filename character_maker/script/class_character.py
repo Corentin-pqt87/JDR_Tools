@@ -47,6 +47,7 @@ class Character :
             "competence_perception": False,
             "competence_persuasion": False,
             "competence_religion": False,
+            "competence_representation" : False,
             "competence_survie": False,
             "competence_tromperie": False,
             "inventaire": []

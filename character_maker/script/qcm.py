@@ -24,6 +24,8 @@ def qcm():
     alignement = list()
     historique = list()
     race = list()
+    competance = list()
+    outils = list()
     
     print("Bienvenue dans le questionnaire de création de personnage Dungeons & Dragons.")
     
@@ -215,6 +217,7 @@ def qcm():
     choi_6 = int(input("Choix (1-4) :\n>>> "))
     #  1  +1 Intelligence, compétence : Arcanes, outils : calligraphie
     if choi_6 == 1:
+        outils.append('Outils de calligraphie')
         character.data['stat_intelligence'] += 1
         if character.data['competence_arcanes'] == True:
             character.data['stat_intelligence'] += 1
@@ -312,15 +315,107 @@ def qcm():
         alignement.append('Chaotique Neutre')
     #  4  compétence : Investigation, outils : outils de cartographe
     elif choi_7 == 4:
+        outils.append('Outils de cartographe')
         if character.data['competence_investigation'] == True:
             character.data['stat_dexterity'] += 1
         else:
             character.data['competence_investigation'] = True
-    #   Question 8 : L’Identité
+    #   Question 8 : L’Artisanat
     print(
-        "On te prend pour quelqu’un d’autre : un héros ou un criminel célèbre. Que fais-tu ?\n\n",
-        "1. Je corrige immédiatement l’erreur.\n",
-        "2. Je joue le jeu pour voir ce que j’en retire.\n",
-        "3. Je panique et prends la fuite\n",
-        "4. Je menace ceux qui m’accusent et retourne la situation."
+        "Quel type d’activité manuelle te rend le plus fier ?\n\n",
+        "1. La forge ou la menuiserie.\n",
+        "2. La cuisine ou la médecine.\n",
+        "3. La peinture ou la musique.\n",
+        "4. Je n’aime pas me salir les mains.."
     )
+    choi_8 = int(input("Choix (1-4) :\n>>> "))
+    #  1  outils : outils de forgeron, compétence : Artisanat, race : Naine possible
+    if choi_8 == 1:
+        competance.append('Artisanat')
+        outils.append('Outils de forgeron')
+        race.append('Nain')
+        character.data['stat_force'] += 1
+        character.data['stat_constitution'] += 1
+    #  2  outils : ustensiles de cuisinier ou herboriste, compétence : Médecine
+    elif choi_8 == 2:
+        outils.append('Ustensiles de cuisinier')
+        outils.append("Ustensiles d'herboriste")
+        if character.data['competence_medic'] == True:
+            character.data['stat_intelligence'] += 1
+        else:
+            character.data['competence_medic'] = True
+        race.append('Humain')
+        race.append('Demi-elfe')
+        race.append('Elfe')
+        classe.append('Druide')
+    #  3  outils : instrument ou outils de peintre, compétence : Performance
+    elif choi_8 == 3:
+        choi_8_ = int(input("Plus musique ou peinture ?\n1. Musique\n2. Peinture\n>>> "))
+        classe.append('Barde')
+        if choi_8_ == 1:
+            outils.append('Instrument de musique')
+            if character.data['competence_representation'] == True:
+                character.data['stat_charisme'] += 1
+            else:
+                character.data['competence_representation'] = True
+        elif choi_8_ == 2:
+            outils.append('Outils de peintre')
+            if character.data['competence_representation'] == True:
+                character.data['stat_sagesse'] += 1
+            else:
+                character.data['competence_representation'] = True
+    #  4  +1 Charisme, race : Elfe ou Tieffelin probable
+    elif choi_8 == 4:
+        character.data['stat_charisme'] += 1
+        race.append('Elfe')
+        race.append('Tieffelin')
+    #   Question 9 : Le Mystère
+    print(
+        "Une étrange entité t’offre un pouvoir en échange d’un service futur inconnu. Acceptes-tu ?\n\n",
+        "1. Oui, le pouvoir m’aidera à faire le bien.\n",
+        "2. Non, je refuse tout pacte sans condition.\n",
+        "3. Oui, mais je prépare un plan pour trahir l’entité.\n",
+        "4. Je tente de piéger ou détruire l’entité."
+    )
+    choi_9 = int(input("Choix (1-4) :\n>>> "))
+    #  1  Classe potentielle : Sorcier, Alignement : Bon
+    if choi_9 == 1:
+        classe.append('occultiste')
+        alignement.append('Loyal Bon')
+        alignement.append('Neutre Bon')
+    #  2  Alignement : Loyal, +1 Sagesse
+    elif choi_9 == 2:
+        alignement.append('Loyal Bon')
+        alignement.append('Loyal Mauvais')
+        character.data['stat_sagesse'] += 1
+        classe.append('Paladin')
+        classe.append('Clerc')
+        
+    #  3  Alignement : Chaotique Neutre, compétence : Tromperie
+    elif choi_9 == 3:
+        alignement.append('Chaotique Neutre')
+        if character.data['competence_tromperie'] == True:
+            character.data['stat_charisme'] += 1
+        else:
+            character.data['competence_tromperie'] = True
+        character.data['stat_intelligence'] += 1
+    # 4  compétence : Arcanes ou Religion, Classe potentielle : Magicien ou Clerc
+    elif choi_9 == 4:
+        classe.append('Paladin')
+        classe.append('Clerc')
+        classe.append('Roublard')
+    
+    # Determiner les réponces a garder
+    # Race
+    print(
+        f"Race : {race}\n",
+        f"classe : {classe}\n",
+        f"historique : {historique}\n",
+        f"Outils : {outils}\n",
+        f"Alignement : {alignement}\n",
+        character
+    )
+if __name__ == '__main__':
+    qcm()
+    # stat fin : satat + 4 * 2
+    print('FIN')
