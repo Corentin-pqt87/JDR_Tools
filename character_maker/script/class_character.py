@@ -37,6 +37,7 @@ class Character :
             "competence_acrobatie": False,
             "competence_arcanes": False,
             "competence_athletisme": False,
+            "competence_escamotage": False,
             "competence_discretion": False,
             "competence_histoire": False,
             "competence_intimidation": False,
