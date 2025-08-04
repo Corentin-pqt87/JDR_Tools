@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from random import randint
 from .class_character import *
 from .class_arme import *
 from .class_armure import *
@@ -60,7 +61,7 @@ def qcm():
         classe.append('Roublard')
     # 4. +1 Force, Alignement : Loyal Neutre ou Loyal Mauvais
     elif choi_1 == 4:
-        character.data["stat_force"] += 1
+        character.data["stat_force"] += 2
         alignement.append("Loyal Neutre")
         alignement.append("Loyal Mauvais")    
     #   Question 2
@@ -70,8 +71,8 @@ def qcm():
         "\n",
         "1. J'organise la défense avec les anciens et les chasseurs.\n",
         "2. Je prépare un piège dans les bois, sans en parler à personne.\n",
-        "3. Je propose de négocier avec les brigands."
-        "4. Je m’enfuis discrètement la nuit avec mes proches."
+        "3. Je propose de négocier avec les brigands.\n",
+        "4. Je m'enfuis discrètement la nuit avec mes proches."
     )
     choi_2 = int(input("Choix (1-4) :\n>>> "))
     # 1. Classe probable : Paladin ou Guerrier, Alignement : Loyal Bon
@@ -79,7 +80,7 @@ def qcm():
         classe.append("Paladin")
         classe.append("Guerrier")
         alignement.append("Loyal Bon")
-        character.data["stat_constitution"] += 1
+        character.data["stat_constitution"] += 2
     # 2. Classe probable : Rôdeur ou Voleur, Alignement : Neutre
     elif choi_2 == 2:
         classe.append("Rôdeur")
@@ -127,7 +128,7 @@ def qcm():
         race.append("Naine")
         race.append('Demi-orque')
         classe.append('Barbare')
-        character.data["stat_force"] += 1
+        character.data["stat_force"] += 2
     # 4. Historique : Acolyte, Classe possible : Clerc, Alignement : Loyal Bon
     elif choi_3 == 4:
         historique.append("Acolyte")
@@ -200,7 +201,7 @@ def qcm():
     #  3  Alignement : Chaotique, Classe : Sorcier
     elif choi_5 == 3:
         alignement.append('Chaotique')
-        classe.append('occultiste')
+        classe.append('Occultiste')
     #  4  Historique : Sage ou Ermite, Race : dépendante
     elif choi_5 == 4:
         historique.append('Sage')
@@ -295,7 +296,7 @@ def qcm():
     #  1   compétence : Survie, historique : Explorateur ou Vagabond
     if choi_7 == 1:
         if character.data['competence_survie'] == True:
-            character.data['stat_constitution'] = True
+            character.data['stat_constitution'] += 1
         else:
             character.data['competence_survie'] = True
         historique.append('Explorateur')
@@ -305,7 +306,7 @@ def qcm():
         alignement.append('Loyal Neutre')
         historique.append('Artisan')
         historique.append('Citadin')
-        character.data['stat_constitution'] += 1
+        character.data['stat_constitution'] += 2
     #  3   compétence : Persuasion, Alignement : Chaotique Neutre
     elif choi_7 == 3:
         if character.data['competence_persuasion'] == True:
@@ -334,7 +335,7 @@ def qcm():
         competance.append('Artisanat')
         outils.append('Outils de forgeron')
         race.append('Nain')
-        character.data['stat_force'] += 1
+        character.data['stat_force'] += 2
         character.data['stat_constitution'] += 1
     #  2  outils : ustensiles de cuisinier ou herboriste, compétence : Médecine
     elif choi_8 == 2:
@@ -380,7 +381,7 @@ def qcm():
     choi_9 = int(input("Choix (1-4) :\n>>> "))
     #  1  Classe potentielle : Sorcier, Alignement : Bon
     if choi_9 == 1:
-        classe.append('occultiste')
+        classe.append('Occultiste')
         alignement.append('Loyal Bon')
         alignement.append('Neutre Bon')
     #  2  Alignement : Loyal, +1 Sagesse
@@ -406,16 +407,184 @@ def qcm():
         classe.append('Roublard')
     
     # Determiner les réponces a garder
-    # Race
-    print(
-        f"Race : {race}\n",
-        f"classe : {classe}\n",
-        f"historique : {historique}\n",
-        f"Outils : {outils}\n",
-        f"Alignement : {alignement}\n",
-        character
-    )
+    # Race : On garde l'élement le plus présent dans la liste race
+    if len(race) > 0:
+        race_max = max(set(race), key=race.count)
+    else:
+        race_max = "Humain"
+    character.data['race'] = race_max
+    
+    
+    # Alignement : On garde l'élement le plus présent dans la liste alignement
+    if len(alignement) > 0:
+        alignement_max = max(set(alignement), key=alignement.count)
+    else:
+        alignement_max = "Neutre"
+    character.data['alignment'] = alignement_max
+    # Historique : On garde l'élement le plus présent dans la liste historique
+    if len(historique) > 0:
+        historique_max = max(set(historique), key=historique.count)
+    else:
+        historique_max = "Aucun"
+    character.data['historique'] = historique_max
+    # Compétence : On garde l'élement le plus présent dans la liste compétence
+    if len(competance) > 0:
+        competance_max = max(set(competance), key=competance.count)
+    else:
+        competance_max = "Aucune"
+    character.data['competence'] = competance_max
+    # Classe : On regarde la stat la plus haute et on donne plus d'importance au classe qui l'utilise pus on garde la classe qui apparait le plus souvent
+    if character.data['stat_force'] >= character.data['stat_dexterity'] and character.data['stat_force'] >= character.data['stat_constitution'] and character.data['stat_force'] >= character.data['stat_intelligence'] and character.data['stat_force'] >= character.data['stat_sagesse'] and character.data['stat_force'] >= character.data['stat_charisme']:
+        classe.append('Guerrier')
+        classe.append('Barbare')
+    elif character.data['stat_dexterity'] >= character.data['stat_force'] and character.data['stat_dexterity'] >= character.data['stat_constitution'] and character.data['stat_dexterity'] >= character.data['stat_intelligence'] and character.data['stat_dexterity'] >= character.data['stat_sagesse'] and character.data['stat_dexterity'] >= character.data['stat_charisme']:
+        classe.append('Voleur')
+        classe.append('Rodeur')
+    elif character.data['stat_constitution'] >= character.data['stat_force'] and character.data['stat_constitution'] >= character.data['stat_dexterity'] and character.data['stat_constitution'] >= character.data['stat_intelligence'] and character.data['stat_constitution'] >= character.data['stat_sagesse'] and character.data['stat_constitution'] >= character.data['stat_charisme']:
+        classe.append('Guerrier')
+        classe.append('Paladin')
+        if character.data['competence_religion'] == True:
+            classe.append('Clerc')
+    elif character.data['stat_intelligence'] >= character.data['stat_force'] and character.data['stat_intelligence'] >= character.data['stat_dexterity'] and character.data['stat_intelligence'] >= character.data['stat_constitution'] and character.data['stat_intelligence'] >= character.data['stat_sagesse'] and character.data['stat_intelligence'] >= character.data['stat_charisme']:
+        classe.append('Magicien')
+        classe.append('Occultiste')
+        classe.append('Ensorceleur')
+    elif character.data['stat_sagesse'] >= character.data['stat_force'] and character.data['stat_sagesse'] >= character.data['stat_dexterity'] and character.data['stat_sagesse'] >= character.data['stat_constitution'] and character.data['stat_sagesse'] >= character.data['stat_intelligence'] and character.data['stat_sagesse'] >= character.data['stat_charisme']:
+        classe.append('Druide')
+        if character.data['competence_religion'] == True:
+            classe.append('Clerc')
+    elif character.data['stat_charisme'] >= character.data['stat_force'] and character.data['stat_charisme'] >= character.data['stat_dexterity'] and character.data['stat_charisme'] >= character.data['stat_constitution'] and character.data['stat_charisme'] >= character.data['stat_intelligence'] and character.data['stat_charisme'] >= character.data['stat_sagesse']:
+        classe.append('Barde')
+        classe.append('Ensorceleur')
+        classe.append('Paladin')
+    classe_max = max(set(classe), key=classe.count)
+    character.data['classe'] = classe_max
+   
+    # si le total des stats est inferieur:
+    # on crée une liste de valeur aléatoire don la somme est la différence entre 72 et le total des stats
+    # on réparti ces 6 valeurs dans les 6 stats dans l'ordre suivant : Force, Dextérité, Constitution, Intelligence, Sagesse, Charisme
+    # si le total des stats est supérieur ou égal à 82, on diminue les stats les plus hautes pour que le total soit égal à 72
+    # Si une stat est supérieur à 17, on la diminue de 1 et on augmente la stat la plus basse de 1 jusqu'à ce que toutes les stats soient inférieures ou égales à 17
+    if character.data['stat_force'] > 17:
+        character.data['stat_force'] = 17
+        character.data['stat_dexterity'] += 1
+    if character.data['stat_dexterity'] > 17:
+        character.data['stat_dexterity'] = 17
+        character.data['stat_constitution'] += 1
+    if character.data['stat_constitution'] > 17:
+        character.data['stat_constitution'] = 17
+        character.data['stat_intelligence'] += 1
+    if character.data['stat_intelligence'] > 17:
+        character.data['stat_intelligence'] = 17
+        character.data['stat_sagesse'] += 1
+    if character.data['stat_sagesse'] > 17:
+        character.data['stat_sagesse'] = 17
+        character.data['stat_charisme'] += 1
+    if character.data['stat_charisme'] > 17:
+        character.data['stat_charisme'] = 17
+        character.data['stat_force'] += 1
+    total_stat = character.data['stat_force'] + character.data['stat_dexterity'] + character.data['stat_constitution'] + character.data['stat_intelligence'] + character.data['stat_sagesse'] + character.data['stat_charisme']
+    if total_stat < 72:
+        diff = 72 - total_stat
+        stats = [randint(1, 6) for _ in range(6)]
+        while sum(stats) < diff:
+            stats[randint(0, 5)] += 1
+        character.data['stat_force'] += stats[0]
+        character.data['stat_dexterity'] += stats[1]
+        character.data['stat_constitution'] += stats[2]
+        character.data['stat_intelligence'] += stats[3]
+        character.data['stat_sagesse'] += stats[4]
+        character.data['stat_charisme'] += stats[5]
+    elif total_stat > 72:
+        diff = total_stat - 72
+        stats = [character.data['stat_force'], character.data['stat_dexterity'], character.data['stat_constitution'], character.data['stat_intelligence'], character.data['stat_sagesse'], character.data['stat_charisme']]
+        while sum(stats) > 72:
+            index = stats.index(max(stats))
+            stats[index] -= 1
+        character.data['stat_force'] = stats[0]
+        character.data['stat_dexterity'] = stats[1]
+        character.data['stat_constitution'] = stats[2]
+        character.data['stat_intelligence'] = stats[3]
+        character.data['stat_sagesse'] = stats[4]
+        character.data['stat_charisme'] = stats[5]
+
+    if classe_max == 'Barbare':
+        character.data['pv_max'] = 12 + modificateur(character.data['stat_constitution'])
+        character.data["armure"] = 10 + modificateur(character.data["stat_dexterity"])
+    elif classe_max == 'Barde':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Clerc':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir cloute"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir cloute", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Druide':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Peaux"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Peaux", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Guerrier':
+        character.data['pv_max'] = 10 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuirasse"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuirasse", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Paladin':
+        character.data['pv_max'] = 10 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Chemise de Mailles"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Chemise de Mailles", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Rodeur':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Roublard':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Occultiste':
+        character.data['pv_max'] = 8 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Matelassee"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Matelassee", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Magicien':
+        character.data['pv_max'] = 6 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir", "data/base/item/armure.txt").data['armor_class'])
+    elif classe_max == 'Ensorceleur':
+        character.data['pv_max'] = 6 + modificateur(character.data['stat_constitution'])
+        character.data['armure_type'] = "Cuir"
+        character.data["armure"] = modificateur(character.data["stat_dexterity"]) + int(armure_get_by_name("Cuir", "data/base/item/armure.txt").data['armor_class'])
+
+    character.data['pv'] = character.data['pv_max']
+
+    # On affiche les résultats
+    print("\n--- Résumé du personnage ---")
+    for key, value in character.data.items():
+        print(f"{key} : {value}")
+    print("\n--- Compétences ---")
+    for key, value in character.data.items():
+        if key.startswith('competence_') and value:
+            print(f"{key.replace('competence_', '').capitalize()} : Oui")
+        elif key.startswith('sauvegarde_') and value > 0:
+            print(f"{key.replace('sauvegarde_', '').capitalize()} : {value}")
+    print("\n--- Alignement ---")
+    print(f"Alignement : {character.data['alignement']}")
+    print("\n--- Classe ---")
+    print(f"Classe : {character.data['classe']}")
+    print("\n--- Historique ---")
+    print(f"Historique : {character.data['historique']}")
+    print("\n--- Outils ---")
+    print(f"Outils : {character.data['outils']}")
+    print("\n--- Informations supplémentaires ---")
+    print(f"Nom : {character.data['name']}")
+    print(f"Race : {character.data['race']}")
+    print(f"Classe : {character.data['classe']}")
+    print(f"Niveau : {character.data['niveau']}")
+    print(f"Alignement : {character.data['alignement']}")
+    print(f"Historique : {character.data['historique']}")
+    print(f"Outils : {character.data['outils']}")
+    print(f"Statistiques :")
+    for key, value in character.data.items():
+        if key.startswith('stat_'):
+            print(f"  {key.replace('stat_', '').capitalize()} : {value}")
+    # On enregistre le personnage dans un fichier
+    character.save(f"data/save/character/{character.data['name']}.txt")
 if __name__ == '__main__':
     qcm()
-    # stat fin : satat + 4 * 2
-    print('FIN')

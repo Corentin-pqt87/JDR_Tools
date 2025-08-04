@@ -13,3 +13,7 @@ start = input(
 if start == "1":
     print("Vous avez choisi de créer votre personnage étape par étape.")
     etape_par_etape.etape_par_etape_RUN()
+elif start == "2":
+    print("Vous avez choisi de créer votre personnage par un questionnaire.")
+    from .script import qcm
+    qcm.qcm()
