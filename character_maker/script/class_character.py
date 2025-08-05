@@ -9,7 +9,7 @@ class Character :
         self.data = {
             "name": "",
             "level": 1,
-            "class": "",
+            "classe": "",
             "race": "",
             "alignment": "",
             "historique":"",
@@ -21,7 +21,7 @@ class Character :
             "stat_charisme": 0,
             "bonus_maitrise": 2,
             "pv_max": 10,
-            "pv_actuel": 10,
+            "pv": 10,
             "armure": 0,
             "armure_type": None,
             "arme_principale": None,

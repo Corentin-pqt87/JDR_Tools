@@ -1,0 +1,45 @@
+name: Timy Full One
+level: 1
+classe: Paladin
+race: Nain
+alignment: Loyal Bon
+historique: Noble
+stat_force: 14
+stat_dexterity: 9
+stat_constitution: 16
+stat_intelligence: 14
+stat_sagesse: 10
+stat_charisme: 9
+bonus_maitrise: 2
+pv_max: 13
+pv: 13
+armure: 12
+armure_type: Chemise de Mailles
+arme_principale: None
+arme_secondaire: None
+initiative: 0
+vitesse: 7.5
+sauvegarde_force: 0
+sauvegarde_dexterite: 0
+sauvegarde_constitution: 0
+sauvegarde_intelligence: 0
+sauvegarde_sagesse: 0
+sauvegarde_charisme: 0
+competence_acrobatie: False
+competence_arcanes: True
+competence_athletisme: False
+competence_escamotage: False
+competence_discretion: False
+competence_histoire: False
+competence_intimidation: False
+competence_investigation: True
+competence_medic: False
+competence_nature: False
+competence_perception: False
+competence_persuasion: False
+competence_religion: False
+competence_representation: False
+competence_survie: True
+competence_tromperie: False
+inventaire: []
+competence: Artisanat
