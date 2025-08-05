@@ -41,7 +41,7 @@ def show_result(title, character):
     infos = [
         ("Nom", character.data.get("name", "")),
         ("Race", character.data.get("race", "")),
-        ("Classe", character.data.get("class", "")),
+        ("Classe", character.data.get("classe", "")),
         ("Niveau", character.data.get("niveau", "")),
         ("Alignement", character.data.get("alignment", "")),
         ("Historique", character.data.get("historique", "")),
@@ -179,7 +179,7 @@ def etape_par_etape_RUN():
     classe = ""
     while classe not in classe_lst:
         classe = ask_string("Classe", "Entrez la classe de votre personnage :\n" + ", ".join(classe_lst))
-    character.data["class"] = classe
+    character.data["classe"] = classe
 
     # Niveau
     niveau = ask_int("Niveau", "Entrez le niveau de votre personnage :", 1, 20)
